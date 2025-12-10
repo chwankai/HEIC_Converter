@@ -27,3 +27,5 @@ for file in os.listdir(input_folder):
         print(f"Converted {file} → {jpg_filename}")
 
 print("Conversion process complete.")
+
+#test
