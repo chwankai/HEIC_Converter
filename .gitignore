@@ -1,3 +1,15 @@
-*.jpg
-*.HEIC
+# PyInstaller / build files
+/dist/
+/build/
+/*.spec
+
+# macOS
+*.app
 *.DS_Store
+
+# Windows
+*.exe
+
+# Image
+*.heic
+*.jpg

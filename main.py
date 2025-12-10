@@ -1,5 +1,8 @@
-import os
-import sys
+import sys, os
+if getattr(sys, 'frozen', False):
+    base_dir = sys._MEIPASS
+else:
+    base_dir = os.path.dirname(os.path.abspath(__file__))
 from PyQt5.QtWidgets import (
     QApplication, QWidget, QLabel, QPushButton, QLineEdit,
     QFileDialog, QVBoxLayout, QHBoxLayout, QMessageBox,
