@@ -9,6 +9,7 @@ from PyQt5.QtWidgets import (
     QCheckBox, QGroupBox, QProgressBar, QTextEdit
 )
 from PyQt5.QtGui import QFont
+from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import Qt, QThread, pyqtSignal
 from PIL import Image
 import pillow_heif
@@ -60,6 +61,7 @@ class HEICConverterApp(QWidget):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("HEIC to JPG Converter")
+        self.setWindowIcon(QIcon("icon.icns"))
         self.setMinimumWidth(1000)
 
         # Default folders
@@ -86,8 +88,11 @@ class HEICConverterApp(QWidget):
         self.input_path = QLineEdit(self.default_input)
         browse_in = QPushButton("Browse")
         browse_in.clicked.connect(self.browse_input)
+        open_in = QPushButton("Open Folder") 
+        open_in.clicked.connect(lambda: os.system(f'open "{self.input_path.text()}"'))
         input_layout.addWidget(self.input_path)
         input_layout.addWidget(browse_in)
+        input_layout.addWidget(open_in)
         input_group.setLayout(input_layout)
         layout.addWidget(input_group)
 
@@ -100,8 +105,11 @@ class HEICConverterApp(QWidget):
         self.output_path = QLineEdit(self.default_output)
         browse_out = QPushButton("Browse")
         browse_out.clicked.connect(self.browse_output)
+        open_out = QPushButton("Open Folder") 
+        open_out.clicked.connect(lambda: os.system(f'open "{self.output_path.text()}"'))
         output_layout.addWidget(self.output_path)
         output_layout.addWidget(browse_out)
+        output_layout.addWidget(open_out) 
         output_group.setLayout(output_layout)
         layout.addWidget(output_group)
 
